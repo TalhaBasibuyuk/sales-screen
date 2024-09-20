@@ -15,17 +15,16 @@ public class LandingPage extends JPanel implements ActionListener {
 
         setLayout(new BorderLayout());
 
-        // Gradient background for the landing page
-        setBackground(new Color(60, 63, 65)); // Dark background color
+        setBackground(new Color(60, 63, 65));
 
         JLabel title = new JLabel("Sipariş Sistemine Hoş Geldiniz");
-        title.setFont(new Font("Segoe UI", Font.BOLD, 32)); // Large, modern font
-        title.setForeground(Color.WHITE); // White text for contrast
+        title.setFont(new Font("Segoe UI", Font.BOLD, 32));
+        title.setForeground(Color.WHITE);
         title.setHorizontalAlignment(SwingConstants.CENTER);
         add(title, BorderLayout.NORTH);
 
         JPanel buttonPanel = new JPanel(new GridBagLayout());
-        buttonPanel.setBackground(new Color(60, 63, 65)); // Match the background color
+        buttonPanel.setBackground(new Color(60, 63, 65));
         GridBagConstraints gbc = new GridBagConstraints();
 
         setupButton(button1);
@@ -45,7 +44,7 @@ public class LandingPage extends JPanel implements ActionListener {
 
         JLabel footer = new JLabel("© 2024 Sipariş Yönetimi Inc.");
         footer.setFont(new Font("Segoe UI", Font.ITALIC, 12));
-        footer.setForeground(Color.LIGHT_GRAY); // Lighter text to make it subtle
+        footer.setForeground(Color.LIGHT_GRAY);
         add(footer, BorderLayout.SOUTH);
 
         button1.addActionListener(this);
@@ -53,8 +52,8 @@ public class LandingPage extends JPanel implements ActionListener {
     }
 
     private void setupButton(JButton button) {
-        button.setBackground(new Color(102, 205, 170)); // Medium aquamarine color
-        button.setForeground(Color.WHITE); // White text
+        button.setBackground(new Color(102, 205, 170));
+        button.setForeground(Color.WHITE);
         button.setFocusPainted(false);
         button.setBorder(BorderFactory.createLineBorder(Color.BLACK, 2));
         button.setContentAreaFilled(false);
@@ -65,11 +64,11 @@ public class LandingPage extends JPanel implements ActionListener {
 
         button.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
-                button.setBackground(new Color(72, 209, 204)); // Change color on hover
+                button.setBackground(new Color(72, 209, 204));
             }
 
             public void mouseExited(java.awt.event.MouseEvent evt) {
-                button.setBackground(new Color(102, 205, 170)); // Original color
+                button.setBackground(new Color(102, 205, 170));
             }
         });
     }
@@ -77,15 +76,9 @@ public class LandingPage extends JPanel implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == button1) {
-            // Transition to CustomerInfoPage panel
-            // Handle navigation logic here
-            //System.out.println("Navigate to CustomerInfoPage");
             cardLayout.show(parentPanel, "CustomerInfoPage");
         }
         if (e.getSource() == button2) {
-            // Transition to RefundPage panel
-            // Handle navigation logic here
-            //System.out.println("Navigate to RefundPage");
             cardLayout.show(parentPanel, "RefundPage");
         }
     }

@@ -24,7 +24,7 @@ public class OrderCompletePage extends JPanel implements ActionListener, DataCha
         this.psPage = productSelectionPage;
 
         setLayout(new GridBagLayout());
-        setBackground(new Color(240, 240, 240)); // Light gray background
+        setBackground(new Color(240, 240, 240));
 
         GridBagConstraints gbc = new GridBagConstraints();
         gbc.insets = new Insets(15, 15, 15, 15);
@@ -33,27 +33,23 @@ public class OrderCompletePage extends JPanel implements ActionListener, DataCha
         gbc.gridy = 0;
         gbc.gridwidth = GridBagConstraints.REMAINDER;
 
-        // Create a title label
         JLabel titleLabel = new JLabel("Siparişiniz Tamamlandı", SwingConstants.CENTER);
         titleLabel.setFont(new Font("Segoe UI", Font.BOLD, 28));
         titleLabel.setForeground(new Color(40, 40, 40));
         add(titleLabel, gbc);
 
-        // Create a message label
         JLabel messageLabel = new JLabel("Teşekkür ederiz! Siparişiniz başarıyla alındı.", SwingConstants.CENTER);
         messageLabel.setFont(new Font("Segoe UI", Font.PLAIN, 18));
         messageLabel.setForeground(new Color(80, 80, 80));
         gbc.gridy++;
         add(messageLabel, gbc);
 
-        // Create a message label
-        JLabel infoLabel = new JLabel("placeholder", SwingConstants.CENTER); // TODO
+        JLabel infoLabel = new JLabel("placeholder", SwingConstants.CENTER);
         infoLabel.setFont(new Font("Segoe UI", Font.PLAIN, 14));
         infoLabel.setForeground(new Color(80, 80, 80));
         gbc.gridy++;
         add(infoLabel, gbc);
 
-        // Create and style buttons
         homeButton = new JButton("Ana Sayfa");
         newOrderButton = new JButton("Yeni Sipariş");
         emailReceiptButton = new JButton("Sipariş Dökümünü Email Gönder");
@@ -79,7 +75,6 @@ public class OrderCompletePage extends JPanel implements ActionListener, DataCha
         emailReceiptButton.setFocusable(false);
         emailReceiptButton.setBorder(BorderFactory.createEmptyBorder(10, 20, 10, 20));}
 
-        // Create button panel
         JPanel buttonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER, 20, 10));
         buttonPanel.setOpaque(false);
         buttonPanel.add(homeButton);
@@ -90,7 +85,6 @@ public class OrderCompletePage extends JPanel implements ActionListener, DataCha
         gbc.gridwidth = GridBagConstraints.REMAINDER;
         add(buttonPanel, gbc);
 
-        // Set up listeners for buttons
         homeButton.addActionListener(this);
         newOrderButton.addActionListener(this);
         emailReceiptButton.addActionListener(this);
@@ -112,8 +106,7 @@ public class OrderCompletePage extends JPanel implements ActionListener, DataCha
         } else if (source == newOrderButton) {
             cardLayout.show(parentPanel, "ProductSelectionPage");
         } else if (source == emailReceiptButton) {
-            // Implement receipt printing logic
-            //JOptionPane.showMessageDialog(this, "Fiş yazdırma işlevi henüz uygulanmadı.");
+
             try {
                 emailHandler.sendMail(emailAddress, "Test Email",
                         """
@@ -162,7 +155,7 @@ public class OrderCompletePage extends JPanel implements ActionListener, DataCha
             }
         }
     }
-    //Sipariş numaranız: 5
+
     @Override
     public void onDataChange(String newData) {
         setEmailAddress(newData);

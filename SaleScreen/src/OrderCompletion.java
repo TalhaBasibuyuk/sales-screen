@@ -12,33 +12,26 @@ public class OrderCompletion {
     private static int orderCompleter(String name, String phone, String mail, String items, String price){
 
         try {
-            // Prepare the JSON body
             String jsonInputString = String.format(
                     "{\"customer\": {\"fullName\": \"%s\", \"phoneNumber\": \"%s\", \"emailAddress\": \"%s\"}, \"order\": {\"item_description\": \"%s\", \"price_paid\": \"%s\"}}",
                     name, phone, mail, items, price
             );
 
-            // API URL
             String apiUrl = "http://localhost:8080/orders/post";
 
-            // Fetch connection
             HttpURLConnection apiConnection = fetchApiResponse(apiUrl);
 
             if (apiConnection != null) {
                 apiConnection.setRequestMethod("POST");
                 apiConnection.setRequestProperty("Content-Type", "application/json; utf-8");
-                apiConnection.setDoOutput(true);  // Allow sending the request body
+                apiConnection.setDoOutput(true);
 
-                // Write the JSON to the request body
                 try (OutputStream os = apiConnection.getOutputStream()) {
                     byte[] input = jsonInputString.getBytes("utf-8");
                     os.write(input, 0, input.length);
                 }
 
-                // Read and return the response
                 String response = readApiResponse(apiConnection);
-                //System.out.println("Response from API: " + response);
-                System.out.println(response);
                 return Integer.parseInt(response);
             }
 
